@@ -47,6 +47,6 @@
 #boton{
     display: flex;
     align-items: flex-end;
-    background-color: blue;
+    background-color: rgb(255, 0, 200);
     border-radius: 50%;
 }
