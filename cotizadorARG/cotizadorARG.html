@@ -46,7 +46,47 @@
 		</div>
 		<div class="body">
 
-			cotizador ARG
+			<form  method="post">
+				<ul>
+					<li>
+						<label for="Plan">Selecciona un plan:</label><br>
+						<input type="button" id="planStarter" name="STARTER" value="STARTER">
+						<input type="button" id="planPremium" name="PREMIUM" value="PREMIUM">
+						<input type="button" id="planCorporate" name="CORPORATE" value="CORPORATE">
+					</li>
+					<li>
+						<label for="Contactos">Selecciona cantidad de contactos</label><br>
+						<input type="range" id="cantidadDeContactos" name="cantidadDeContactos" max="1000" min="200" step="200" value="200" onChange="contadorDeContactos()">
+						<h2 id="resultRango"></h2> 
+					</li>
+					<li>
+						<label for="Cotización">$USD Cotización:</label><br>
+						<input type="number" id="valorCotizacion" name="$USD Cotización" value="STARTER">
+					</li>
+					<li>
+						<label for="Descuento anual">Anual (25% OFF)</label>
+						<input type="radio" id="descuentoAnual" name="Anual (25% OFF)" value="Anual (25% OFF)">
+					</li>
+
+
+				</ul>
+
+
+
+
+			</form>
+
+			<script>
+				function contadorDeContactos(){
+					let x = document.getElementById("cantidadDeContactos").value;
+					document.getElementById("resultRango").innerHTML = x;
+    				//alert(x);
+				}
+				
+			</script>
+
+
+
 
 		</div>
 	</div>
