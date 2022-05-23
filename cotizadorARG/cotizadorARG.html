@@ -39,43 +39,174 @@
 			</div>
 		</div>
 		<div class="body">
-			<form  method="post">
+			<br  method="post">
 				<ul>
 					<li>
 						<label for="Plan">Selecciona un plan:</label><br>
-						<input type="button" id="planStarter" name="STARTER" value="STARTER" onclick="ClicStarter()">
-						<input type="button" id="planPremium" name="PREMIUM" value="PREMIUM">
-						<input type="button" id="planCorporate" name="CORPORATE" value="CORPORATE">
+						<input type="button" id="planStarter" name="STARTER" value="STARTER" onclick="ClicPlanButton(this.value)">
+						<input type="button" id="planPremium" name="PREMIUM" value="PREMIUM" onclick="ClicPlanButton(this.value)">
+						<input type="button" id="planCorporate" name="CORPORATE" value="CORPORATE" onclick="ClicPlanButton(this.value)">
+						<input type="hidden" value="PREMIUM" id="hiddenPlan">
 					</li>
 					<li>
 						<label for="Contactos">Selecciona cantidad de contactos</label><br>
-						<input type="range" id="cantidadDeContactos" name="cantidadDeContactos" max="1000" min="200" step="200" value="200" onChange="contadorDeContactos()">
+						<input type="range" id="cantidadDeContactos" name="cantidadDeContactos" min="200" max="1000" step="200" value="200" onChange="contadorDeContactos()">
 						<h2 id="resultRango"></h2> 
 					</li>
 					<li>
 						<label for="Cotización">$USD Cotización:</label><br>
-						<input type="number" id="valorCotizacion" name="$USD Cotización" min="1" max="100000">
-					</li>
-					<li>
-						<label for="Descuento anual">Anual (25% OFF)</label>
-						<input type="checkbox" id="descuentoAnual" name="Anual (25% OFF)" value="Anual (25% OFF)">
+						<input type="number" id="valorCotizacion" name="$USD Cotización" min="1" max="100000" value="1">
 					</li>
 				</ul>
+
+				<input type="button" id="buttonCalcular" name="Calcular" value="Calcular" onclick="calcularTotal()" style="margin: 10px 0px 10px 20px;">
+				
+				<div class="contenedorResultados">
+					<div id="Trimestral" class="periodo">
+						<h2>Trimestral: </h2><span id="trimestreResult"> ---- </span>
+					</div>
+					<div id="Semestral" class="periodo">
+						<h2>Semestral: </h2><span id="semestralResult"> ---- </span>
+					</div>
+					<div id="Anual" class="periodo">
+						<h2>Anual: </h2><span id="anualResult"> ---- </span>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>
 
 	<script>
 
+		function ClicPlanButton(value){
+
+			let valueMinuscula = value.toLowerCase();
+
+
+
+			document.getElementById("hiddenPlan").value = valueMinuscula;
+
+
+			if(valueMinuscula  === "STARTER".toLowerCase() ){
+				document.getElementById("trimestreResult").innerHTML = " ---- ";
+				document.getElementById("semestralResult").innerHTML = " ---- ";
+				document.getElementById("anualResult").innerHTML = " ---- ";
+
+				document.getElementById("planStarter").style.color = "red";
+				document.getElementById("planPremium").style.color = "black";
+				document.getElementById("planCorporate").style.color = "black";
+
+
+				document.getElementById("cantidadDeContactos").removeAttribute("disabled", '');
+				document.getElementById("buttonCalcular").removeAttribute("disabled", '');
+
+
+				document.getElementById("cantidadDeContactos").setAttribute("min", 50);
+				document.getElementById("cantidadDeContactos").setAttribute("max", 200);
+				document.getElementById("cantidadDeContactos").setAttribute("step", 50);
+				document.getElementById("cantidadDeContactos").setAttribute("value", 50);
+
+
+				document.getElementById("resultRango").innerHTML = 50;
+
+
+			}else if(valueMinuscula  === "PREMIUM".toLowerCase() ){
+				document.getElementById("trimestreResult").innerHTML = " ---- ";
+				document.getElementById("semestralResult").innerHTML = " ---- ";
+				document.getElementById("anualResult").innerHTML = " ---- ";
+
+				document.getElementById("planPremium").style.color = "red";
+				document.getElementById("planStarter").style.color = "black";
+				document.getElementById("planCorporate").style.color = "black";
+
+				document.getElementById("cantidadDeContactos").removeAttribute("disabled", '');
+				document.getElementById("buttonCalcular").removeAttribute("disabled", '');
+
+
+				document.getElementById("cantidadDeContactos").setAttribute("min", 200);
+				document.getElementById("cantidadDeContactos").setAttribute("max", 1000);
+				document.getElementById("cantidadDeContactos").setAttribute("step", 200);
+				document.getElementById("cantidadDeContactos").setAttribute("value", 200);
+
+
+				document.getElementById("resultRango").innerHTML = 200;
+
+			}else{
+				document.getElementById("trimestreResult").innerHTML = " ---- ";
+				document.getElementById("semestralResult").innerHTML = " ---- ";
+				document.getElementById("anualResult").innerHTML = " ---- ";
+
+				document.getElementById("planCorporate").style.color = "red";
+				document.getElementById("planPremium").style.color = "black";
+				document.getElementById("planStarter").style.color = "black";
+
+
+				document.getElementById("cantidadDeContactos").setAttribute("disabled", '');
+				document.getElementById("buttonCalcular").setAttribute("disabled", '');
+
+
+				document.getElementById("resultRango").innerHTML = "----";
+			}
+
+		}
 		
+		function calcularTotal(){
+			
+			let starterPrice = { 
+								50 : 24 , 
+								100 : 39 , 
+								150 : 56 ,
+								200 : 75 ,
+           					};
+
+			let premiumPrice = { 
+								200 : 90 , 
+								400 : 130 , 
+								600 : 170 , 
+								800 : 210 , 
+								1000 : 250,
+           					};
 
 
 
+			//paso1 : traermos la cantidad de contactos
+			let cantidadDeContactos = document.getElementById("cantidadDeContactos").value; //Valor del rango actual
+
+			let planSeleccionado = document.getElementById("hiddenPlan").value;
+
+			let precioPorContactos = 0;
+
+			if(planSeleccionado === "starter"){
+				 precioPorContactos = starterPrice[cantidadDeContactos];
+			}else{
+				 precioPorContactos = premiumPrice[cantidadDeContactos];
+			}
+
+
+			//paso2 : traermos el valor de la cotización
+			let cotizacionDolar = document.getElementById("valorCotizacion").value; //Valor del rango actual
+			//paso3 : calcular valores trimestral, semestral, anual
+			let trimestral = (precioPorContactos * cotizacionDolar) * 3;
+			let semestral = (precioPorContactos * cotizacionDolar) * 6;
+			let anual = (precioPorContactos * cotizacionDolar) * 12;
+			let PorcentajeAnualDescuento = anual * 0.25;
+			let anualConDescuento = anual - PorcentajeAnualDescuento;
+
+			document.getElementById("trimestreResult").innerHTML = trimestral;
+			document.getElementById("semestralResult").innerHTML = semestral;
+			document.getElementById("anualResult").innerHTML = anual +  " con el 25% OFF quedaria: " + anualConDescuento;
+
+		}
+
+		// SETEO POR DEFECTO
 		const valorInicialCantContactos = parseInt(200);
 		document.getElementById("resultRango").innerHTML = valorInicialCantContactos;
+		document.getElementById("planPremium").style.color = "red";
+
+
 
 		function contadorDeContactos(){
-			let cantidadDeContactos = document.getElementById("cantidadDeContactos").value;
+			let cantidadDeContactos = document.getElementById("cantidadDeContactos").value; //Valur del rango actual
 			document.getElementById("resultRango").innerHTML = cantidadDeContactos;
 		}
 	</script>
