@@ -28,15 +28,18 @@ function SetearValorOculto(tipoDePlan){
     document.getElementById("hiddenPlan").value = tipoDePlan;//Identificador del plan
 }
 
+function EstablecerControlesComunes(tipoDePlan){
+    LimpiarControles();
+    IdentificarBotonPlan(tipoDePlan);
+    DesactivarControles(tipoDePlan);
+    SetearRangoInicial(tipoDePlan);
+}
+
 function SetearControles(tipoDePlan){
     
     if(tipoDePlan  === "starter"){
 
-        LimpiarControles();
-
-        IdentificarBotonPlan(tipoDePlan);
-
-        DesactivarControles(tipoDePlan);
+        EstablecerControlesComunes(tipoDePlan);
 
         //atributos del rango (tipo de plan)
         document.getElementById("cantidadDeContactos").setAttribute("min", 50);
@@ -44,15 +47,9 @@ function SetearControles(tipoDePlan){
         document.getElementById("cantidadDeContactos").setAttribute("step", 50);
         document.getElementById("cantidadDeContactos").setAttribute("value", 50);
 
-        SetearRangoInicial(tipoDePlan);
-
     }else if(tipoDePlan  === "premium"){
 
-        LimpiarControles();
-
-        IdentificarBotonPlan(tipoDePlan);
-
-        DesactivarControles(tipoDePlan);
+        EstablecerControlesComunes(tipoDePlan);
 
         //atributos del rango (tipo de plan)
         document.getElementById("cantidadDeContactos").setAttribute("min", 200);
@@ -60,16 +57,8 @@ function SetearControles(tipoDePlan){
         document.getElementById("cantidadDeContactos").setAttribute("step", 200);
         document.getElementById("cantidadDeContactos").setAttribute("value", 200);
 
-        SetearRangoInicial(tipoDePlan);
-
     }else{
-        LimpiarControles();
-
-        IdentificarBotonPlan(tipoDePlan);
-
-        DesactivarControles(tipoDePlan);
-
-        SetearRangoInicial(tipoDePlan);
+        EstablecerControlesComunes(tipoDePlan);
     }
 }
 
