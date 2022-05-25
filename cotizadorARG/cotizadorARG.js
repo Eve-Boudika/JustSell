@@ -2,7 +2,7 @@ function SetearPorDefecto(){
 			
     SetearRangoInicial("premium");//al iniciar la web su valor comienza en premium
 
-    document.getElementById("planPremium").style.color = "red"; //cambio estilo de boton seleccionado
+    document.getElementById("planPremium").style.color = "white"; //cambio estilo de boton seleccionado
 }
 SetearPorDefecto();//esto es lo unico que se ejecuta al iniciar la pagina las otras funciones via llamadas.
 
@@ -69,9 +69,10 @@ function LimpiarControles(){
 }
 
 function IdentificarBotonPlan(tipoDePlan){
-    document.getElementById("planStarter").style.color = tipoDePlan === "starter" ? "red" : "black";
-    document.getElementById("planPremium").style.color = tipoDePlan === "premium" ? "red" : "black";
-    document.getElementById("planCorporate").style.color = tipoDePlan === "corporate" ? "red" : "black";
+    document.getElementById("planStarter").style.color = tipoDePlan === "starter" ? "white" : "black";
+    document.getElementById("planPremium").style.color = tipoDePlan === "premium" ? "white" : "black";
+    document.getElementById("planCorporate").value = tipoDePlan === "corporate" ? "PROXIMAMENTE" : "CORPORATE";
+    document.getElementById("planCorporate").style.color = tipoDePlan === "corporate" ? "white" : "black";
 }
 
 function DesactivarControles(tipoDePlan){

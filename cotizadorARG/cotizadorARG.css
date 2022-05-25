@@ -1,4 +1,63 @@
-.periodo{
+.periodo {
     display: flex;
     align-items: center;
 }
+
+.body {
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(211, 255, 205);
+    border-radius: 0%;
+    border-width: 10px;
+    width: 60%;
+    
+}
+
+ .boton-plan {
+    background-color: blueviolet;
+    opacity: 75%;
+    border-style: outset;
+    border-color: rgb(206, 122, 218);
+    border-width: 5px;
+    height: 40px;
+    width: 150px;
+    border-radius: 8%;
+    margin: 5%;
+    
+
+}
+
+.boton-plan:hover {
+    background-color: rgba(113, 33, 189, 0.87);
+    opacity: 100%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    
+}
+
+.boton-plan:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+#buttonCalcular{
+    background-color: rgb(52, 38, 241);
+    opacity: 75%;
+    border-style: outset;
+    border-color: rgb(103, 137, 211);
+    border-width: 5px;
+    height: 40px;
+    width: 150px;
+    border-radius: 8%;
+    
+    
+}
+
+#buttonCalcular:hover {
+    background-color: rgba(51, 83, 224, 0.87);
+    opacity: 100%;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+ 
+#buttonCalcular:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
