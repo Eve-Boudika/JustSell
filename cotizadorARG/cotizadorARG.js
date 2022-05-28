@@ -128,7 +128,7 @@ function CotizarPlanes(){
 
     document.getElementById("trimestreResult").innerHTML = trimestral;
     document.getElementById("semestralResult").innerHTML = semestral;
-    document.getElementById("anualResult").innerHTML = anual +  ". Con el 25% OFF quedaria:  $ " + anualConDescuento;
+    document.getElementById("anualResult").innerHTML = anual +  ". Con el 25% OFF quedaría:  $" + anualConDescuento;
 
 }
 
