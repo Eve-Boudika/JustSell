@@ -49,27 +49,27 @@
 						<input type="hidden" value="PREMIUM" id="hiddenPlan">
 					</li>
 					<li>
-						<label for="Contactos">Selecciona cantidad de contactos</label><br>
+						<label for="Contactos">Selecciona cantidad de contactos</label><br><br>
 						<input type="range" id="cantidadDeContactos" name="cantidadDeContactos" min="200" max="1000" step="200" value="200" onChange="SeleccionarContactos()">
 						<h2 id="resultRango"></h2> 
 					</li>
 					<li>
-						<label for="Cotización">$USD Cotización:</label><br>
-						<input type="number" id="valorCotizacion" name="$USD Cotización" min="1" max="100000" value="1">
+						<label for="Cotización">$USD Cotización:</label><br><br>
+						<input type="number" id="valorCotizacion" name="$USD Cotización" min="1" max="100000" value="1"><br>
 					</li>
 				</ul>
 
-				<input type="button" id="buttonCalcular" name="Calcular" value="COTIZAR PLAN" onclick="CotizarPlanes()" style="margin: 10px 0px 10px 20px;">
+				<input type="button" id="buttonCalcular" name="Calcular" value="COTIZAR PLAN" onclick="CotizarPlanes()" style="margin: 10px 0px 10px 20px;"><br>
 				
 				<div class="contenedorResultados">
 					<div id="Trimestral" class="periodo">
-						<h3>Trimestral: </h3><span id="trimestreResult"> ---- </span>
+						<p>Trimestral:  $</p><span id="trimestreResult"> ---- </span><button onclick="CopiarResultado()"> Copiar </button>
 					</div>
 					<div id="Semestral" class="periodo">
-						<h3>Semestral: </h3><span id="semestralResult"> ---- </span>
+						<p>Semestral:  $</p><span id="semestralResult"> ---- </span>
 					</div>
 					<div id="Anual" class="periodo">
-						<h3>Anual: </h3><span id="anualResult"> ---- </span>
+						<p>Anual:  $</><span id="anualResult"> ---- </span>
 					</div>
 				</div>
 			</form>

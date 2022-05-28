@@ -1,6 +1,8 @@
 .periodo {
     display: flex;
-    align-items: center;
+    font-size: x-large;
+    color:rgb(65, 10, 167);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .body {
@@ -9,25 +11,28 @@
     border-radius: 0%;
     border-width: 10px;
     width: 60%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 800;
     
 }
 
  .boton-plan {
-    background-color: blueviolet;
+    background-color: #7d60f5;
     opacity: 75%;
     border-style: outset;
     border-color: rgb(206, 122, 218);
     border-width: 5px;
     height: 40px;
-    width: 150px;
+    width: 160px;
     border-radius: 8%;
     margin: 5%;
+    font-weight: bold;
     
 
 }
 
 .boton-plan:hover {
-    background-color: rgba(113, 33, 189, 0.87);
+    background-color: #7f44f8);
     opacity: 100%;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     
@@ -40,13 +45,14 @@
 
 #buttonCalcular{
     background-color: rgb(52, 38, 241);
-    opacity: 75%;
+    opacity: 80%;
     border-style: outset;
-    border-color: rgb(103, 137, 211);
+    border-color: #a890fb;
     border-width: 5px;
     height: 40px;
     width: 150px;
     border-radius: 8%;
+    color: white
     
     
 }
@@ -61,3 +67,6 @@
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+
+

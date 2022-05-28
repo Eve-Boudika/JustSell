@@ -128,11 +128,23 @@ function CotizarPlanes(){
 
     document.getElementById("trimestreResult").innerHTML = trimestral;
     document.getElementById("semestralResult").innerHTML = semestral;
-    document.getElementById("anualResult").innerHTML = anual +  " con el 25% OFF quedaria: " + anualConDescuento;
+    document.getElementById("anualResult").innerHTML = anual +  ". Con el 25% OFF quedaria:  $ " + anualConDescuento;
 
 }
 
 function SeleccionarContactos(){
-    let cantidadDeContactos = document.getElementById("cantidadDeContactos").value; //Valur del rango actual
+    let cantidadDeContactos = document.getElementById("cantidadDeContactos").value; //Valor del rango actual
     document.getElementById("resultRango").innerHTML = cantidadDeContactos;
+}
+
+function CopiarResultado(){
+    let resultadoTrimestral = document.getElementById("trimestreResult");
+    let resultadoSemestral = document.getElementById("semestralResult");
+    let resultadoAnual = document.getElementById("anualResult");
+
+    let mensajeTrimestral = "Trimestral: $" + resultadoTrimestral.textContent; // interpolar queda mas lindo ./.
+    let mensajeSemestral = "Semestral: $" + resultadoSemestral.textContent;
+    let mensajeAnual = "Anual: $" + resultadoAnual.textContent;
+
+    navigator.clipboard.writeText(mensajeTrimestral+"\n"+mensajeSemestral+"\n"+mensajeAnual);
 }
