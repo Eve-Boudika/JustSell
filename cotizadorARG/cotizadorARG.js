@@ -1,4 +1,7 @@
 function SetearPorDefecto(){
+    document.getElementById("formulario").addEventListener("submit", function(event){
+        event.preventDefault()
+      });
 			
     SetearRangoInicial("premium");//al iniciar la web su valor comienza en premium
 
@@ -16,9 +19,14 @@ function SetearRangoInicial(tipoDePlan){
 
 function CambiarDePlan(tipoDePlan){
 
+
     let tipoDePlanMinuscula = tipoDePlan.toLowerCase();//pasa texto a minuscula
 
-    SetearValorOculto(tipoDePlanMinuscula);
+    if(tipoDePlanMinuscula === "proximamente"){ //si el valor es proximamente no queremos hacer mas nada 
+        return; //al retornar se rompe el ciclo de ejecucion de la funcion 
+        //aca no llegamos. Tampoco a setear valor oculto.
+    }
+    SetearValorOculto(tipoDePlanMinuscula); //Cambia el rango de precios por plan
     
     SetearControles(tipoDePlanMinuscula);
 
@@ -86,8 +94,14 @@ function DesactivarControles(tipoDePlan){
     }
 }
 
+
 function CotizarPlanes(){
     
+    let faltaCotizar = VerificarCotizacion();
+    if (faltaCotizar) {
+        return;   
+    }
+
     const starterPrice = { 
                         50 : 24 , 
                         100 : 39 , 
@@ -103,7 +117,7 @@ function CotizarPlanes(){
                         1000 : 250,
                        };
 
-    //paso1 : traermos la cantidad de contactos
+    //paso1 : traemos la cantidad de contactos
     let cantidadDeContactos = document.getElementById("cantidadDeContactos").value; //Valor del rango actual
 
     let planSeleccionado = document.getElementById("hiddenPlan").value;
@@ -130,6 +144,19 @@ function CotizarPlanes(){
     document.getElementById("semestralResult").innerHTML = semestral;
     document.getElementById("anualResult").innerHTML = anual +  ". Con el 25% OFF quedaría:  $" + anualConDescuento;
 
+}
+
+function VerificarCotizacion(){
+    let valorCotizacion = document.getElementById("valorCotizacion").value;
+    if(valorCotizacion){
+        document.getElementById("advertenciaSinCotizacion").style.display = "none";
+        return false;
+
+    }else{
+        document.getElementById("advertenciaSinCotizacion").style.display = "inline";
+        return true;
+
+    }
 }
 
 function SeleccionarContactos(){

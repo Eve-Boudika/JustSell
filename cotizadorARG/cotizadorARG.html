@@ -38,28 +38,48 @@
 				</menu>
 			</div>
 		</div>
+		
 		<div class="body">
-			<br  method="post">
+			<form id="formulario">
 				<ul>
+					<br>
 					<li>
-						<label for="Plan">Selecciona un plan:</label><br>
+						
+						<label for="Plan">Selecciona un plan:</label>
+						<br>
 						<input type="button" class="boton-plan" id="planStarter" name="STARTER" value="STARTER" onclick="CambiarDePlan(this.value)">
 						<input type="button" class="boton-plan" id="planPremium" name="PREMIUM" value="PREMIUM" onclick="CambiarDePlan(this.value)">
 						<input type="button" class="boton-plan" id="planCorporate" name="CORPORATE" value="CORPORATE" onclick="CambiarDePlan(this.value)">
 						<input type="hidden" value="PREMIUM" id="hiddenPlan">
 					</li>
 					<li>
-						<label for="Contactos">Selecciona cantidad de contactos</label><br><br>
+						<label for="Contactos">Selecciona cantidad de contactos</label>						
 						<input type="range" id="cantidadDeContactos" name="cantidadDeContactos" min="200" max="1000" step="200" value="200" onChange="SeleccionarContactos()">
-						<h2 id="resultRango"></h2> 
+						<br><br>
+						<h2 id="resultRango"></h2>
+						<br>
 					</li>
-					<li>
-						<label for="Cotización">$USD Cotización:</label><br><br>
-						<input type="number" id="valorCotizacion" name="$USD Cotización" min="1" max="100000" value="1"><br>
-					</li>
+						<!-- #region boton bootstrap -->
+						<div class="row col-12 col-sm-6">
+							<div class="input-group mb-3">
+								<label for="Cotización"></label>
+								<span class="input-group-text" id="basic-addon1">
+									<img src="../images/coin.svg" id="coinicon">
+								</span>
+								<input type="number" id="valorCotizacion" class="form-control" name="$USD Cotización" min="1" max="100000" value=""placeholder="Ingresa valor de cotización en USD" aria-label="Username" aria-describedby="basic-addon1">
+								<div class="invalid-feedback" id="advertenciaSinCotizacion">
+									Ingrese un valor en USD
+								</div>
+							</div>
+						</div>
+						<!-- #endregion-->
 				</ul>
 
-				<input type="button" id="buttonCalcular" name="Calcular" value="COTIZAR PLAN" onclick="CotizarPlanes()" style="margin: 10px 0px 10px 20px;"><button onclick="CopiarResultado()"> Copiar </button><br>
+				<div id="botonesCotizar">
+					<input type="button" id="buttonCalcular" name="Calcular" value="COTIZAR PLAN" onclick="CotizarPlanes()">
+					<input type="image" src="../images/clipboard-check-fill.svg" id="botonCopiar" name="Copiar"  onclick="CopiarResultado()" >
+					<br>
+				</div>
 				
 				<div class="contenedorResultados">
 					<div id="Trimestral" class="periodo">
